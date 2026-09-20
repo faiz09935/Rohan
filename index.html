@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build a clean, professional resume in minutes. Add your details and photo, then download it as a PDF.">
+  <title>Resume Maker | Build your resume in minutes</title>
+
+  <!-- Fonts (if you are offline, Georgia and Arial are used instead) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home"><span class="logo">CV</span> Resume Maker</a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#home">Home</a>
+        <a href="#how">How it works</a>
+        <a href="#builder">Build resume</a>
+      </nav>
+      <a class="btn primary" href="#builder">Start now</a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Build a clean resume in minutes.</h1>
+        <p>Fill in your details, upload your photo and download a ready-to-send PDF. No sign-up needed, and nothing leaves your device.</p>
+        <div class="hero-btns">
+          <a class="btn primary big" href="#builder">Build my resume</a>
+          <a class="btn ghost big" href="#how">See how it works</a>
+        </div>
+      </div>
+
+      <!-- A small drawing of a resume, made only with CSS -->
+      <div class="hero-art" aria-hidden="true">
+        <div class="mini">
+          <div class="mini-side">
+            <div class="mini-photo"></div>
+            <i></i><i></i><i class="short"></i>
+            <i></i><i class="short"></i>
+          </div>
+          <div class="mini-main">
+            <b></b>
+            <em></em>
+            <u></u><u></u><u class="short"></u>
+            <u></u><u></u><u class="short"></u>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <h2>Three steps to your resume</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-no">1</span>
+          <h3>Add your details</h3>
+          <p>Type your name, contact info, education, skills and projects. Your resume updates as you type.</p>
+        </li>
+        <li>
+          <span class="step-no">2</span>
+          <h3>Upload your photo</h3>
+          <p>Pick a picture from your device. It is cropped into a neat circle automatically.</p>
+        </li>
+        <li>
+          <span class="step-no">3</span>
+          <h3>Generate and download</h3>
+          <p>Click Generate Resume, pick a colour, then save the finished resume as a PDF.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== RESUME BUILDER ===== -->
+  <section class="builder" id="builder">
+    <div class="section-inner">
+      <div class="builder-head">
+        <div>
+          <h2>Build your resume</h2>
+          <p class="save-note">Your details are saved in this browser only. They are never uploaded anywhere.</p>
+        </div>
+        <div class="tools">
+          <button class="btn ghost" id="sampleBtn" type="button">Load sample</button>
+          <button class="btn ghost" id="clearBtn" type="button">Clear all</button>
+          <button class="btn primary" type="button" data-generate>Generate Resume</button>
+          <button class="btn dark is-disabled" id="printBtn" type="button">Download PDF</button>
+        </div>
+      </div>
+
+      <div class="app">
+
+        <!-- LEFT: the form -->
+        <div class="form-panel" id="form">
+
+          <div class="card">
+            <h3>Personal details</h3>
+            <div class="grid2">
+              <div class="field full">
+                <label for="name">Full name</label>
+                <input type="text" id="name" data-key="name" placeholder="e.g. Rahul Sharma" autocomplete="name">
+              </div>
+              <div class="field full">
+                <label for="role">Job title or what you are studying</label>
+                <input type="text" id="role" data-key="role" placeholder="e.g. B.Tech Student, Web Developer">
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" data-key="email" placeholder="you@example.com" autocomplete="email">
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" data-key="phone" placeholder="+91 98765 43210" autocomplete="tel">
+              </div>
+              <div class="field full">
+                <label for="address">Address or city</label>
+                <input type="text" id="address" data-key="address" placeholder="e.g. Lucknow, Uttar Pradesh">
+              </div>
+              <div class="field full">
+                <span class="label">Photo</span>
+                <div class="photo-row">
+                  <div class="photo-thumb" id="photoThumb">No photo</div>
+                  <div class="photo-btns">
+                    <button class="file-btn" id="photoPick" type="button">Upload photo</button>
+                    <button class="link-btn" id="photoRemove" type="button">Remove photo</button>
+                    <input type="file" id="photoInput" accept="image/*" class="vh" tabindex="-1">
+                  </div>
+                </div>
+                <p class="photo-msg" id="photoMsg" role="status">JPG or PNG works best. It is cropped to a square.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>About me</h3>
+            <p class="note">Two or three lines about yourself.</p>
+            <div class="field">
+              <textarea id="about" data-key="about" aria-label="About me" placeholder="e.g. Motivated student with an interest in web development..."></textarea>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Education</h3>
+            <div id="eduList"></div>
+            <button class="add-btn" id="addEdu" type="button">+ Add education</button>
+          </div>
+
+          <div class="card">
+            <h3>Skills, languages and hobbies</h3>
+            <p class="note">Separate items with commas.</p>
+            <div class="grid2">
+              <div class="field full">
+                <label for="skills">Skills</label>
+                <input type="text" id="skills" data-key="skills" placeholder="HTML, CSS, JavaScript, Python">
+              </div>
+              <div class="field">
+                <label for="languages">Languages</label>
+                <input type="text" id="languages" data-key="languages" placeholder="Hindi, English">
+              </div>
+              <div class="field">
+                <label for="hobbies">Hobbies</label>
+                <input type="text" id="hobbies" data-key="hobbies" placeholder="Gym, Cricket, Music">
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Projects and experience</h3>
+            <div id="projList"></div>
+            <button class="add-btn" id="addProj" type="button">+ Add project</button>
+          </div>
+
+          <div class="generate-bar">
+            <button class="btn primary big" type="button" data-generate>Generate Resume</button>
+            <p>Done filling in? Click the button and your resume will be created in the preview.</p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: live preview -->
+        <div class="preview-panel">
+          <div class="preview-head">
+            <div>
+              <strong>Resume preview</strong>
+              <small id="previewStatus">Click "Generate Resume" to create your resume.</small>
+            </div>
+            <div class="swatches" id="swatches" aria-label="Resume colour"></div>
+          </div>
+          <div class="scroll" id="scroll">
+            <div class="empty-preview" id="emptyPreview">
+              <div class="empty-icon">CV</div>
+              <h4>Your resume will appear here</h4>
+              <p>Fill in the form, then click <b>Generate Resume</b>.</p>
+            </div>
+            <div class="scale-box" id="scaleBox" hidden>
+              <div class="resume" id="resume"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="section-inner">
+      <span>Resume Maker. Built with HTML, CSS and JavaScript.</span>
+      <a href="#home">Back to top</a>
+    </div>
+  </footer>
+
+  <div id="toast" role="status"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

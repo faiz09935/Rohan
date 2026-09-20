@@ -1,0 +1,380 @@
+/* =========================================================
+   RESUME MAKER - style.css
+   Sections: 1) Basics  2) Navigation  3) Hero  4) How it works
+             5) Builder form  6) Preview + Resume  7) Footer
+             8) Mobile  9) Print (PDF)
+   ========================================================= */
+
+/* ---------- 1) Basics ---------- */
+:root {
+  --ui: #0d9488;          /* main colour of the website */
+  --ui-dark: #0b7a70;
+  --ui-soft: #e6f6f4;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #dbe2ea;
+  --bg: #f4f7fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+[hidden] { display: none !important; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid rgba(13, 148, 136, 0.45);
+  outline-offset: 2px;
+}
+
+h1, h2 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; }
+
+.section-inner { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-align: center;
+}
+.btn.big { padding: 14px 26px; font-size: 1rem; border-radius: 12px; }
+.btn.primary { background: var(--ui); color: #fff; }
+.btn.primary:hover { background: var(--ui-dark); }
+.btn.ghost { border: 1px solid var(--line); background: #fff; }
+.btn.ghost:hover { border-color: var(--ui); color: var(--ui-dark); }
+.btn.dark { background: var(--ink); color: #fff; }
+.btn.dark:hover { background: #1e293b; }
+.btn.is-disabled { opacity: 0.45; }   /* still clickable, it shows a hint message */
+
+/* ---------- 2) Navigation ---------- */
+.site-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  max-width: 1300px; margin: 0 auto; padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; }
+.logo {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--ui); color: #fff; font-size: 0.9rem; font-weight: 700;
+}
+.nav-links { display: flex; gap: 28px; font-weight: 500; color: #334155; }
+.nav-links a:hover { color: var(--ui-dark); }
+
+/* ---------- 3) Hero ---------- */
+.hero {
+  background:
+    radial-gradient(40rem 26rem at 90% 10%, rgba(13, 148, 136, 0.16), transparent 60%),
+    linear-gradient(180deg, #ecf8f6 0%, var(--bg) 100%);
+  padding: 72px 0 80px;
+  scroll-margin-top: 60px;
+}
+.hero-inner {
+  max-width: 1300px; margin: 0 auto; padding: 0 24px;
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center;
+}
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.04; }
+.hero p { margin-top: 20px; max-width: 46ch; font-size: 1.12rem; color: #475569; line-height: 1.65; }
+.hero-btns { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+
+/* Mini resume drawing */
+.hero-art { display: flex; justify-content: center; }
+.mini {
+  width: min(320px, 100%);
+  aspect-ratio: 210 / 297;
+  display: grid; grid-template-columns: 34% 1fr;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 30px 60px -20px rgba(15, 23, 42, 0.35);
+  transform: rotate(3deg);
+  overflow: hidden;
+}
+.mini-side { background: var(--ui); padding: 18px 12px; display: flex; flex-direction: column; gap: 9px; }
+.mini-photo { width: 62%; aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, 0.5); margin: 0 auto 10px; }
+.mini-side i { display: block; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.55); }
+.mini-main { padding: 22px 16px; display: flex; flex-direction: column; gap: 9px; }
+.mini-main b { display: block; width: 70%; height: 16px; border-radius: 4px; background: #1f2937; }
+.mini-main em { display: block; width: 45%; height: 8px; border-radius: 4px; background: var(--ui); margin-bottom: 12px; }
+.mini-main u { display: block; height: 6px; border-radius: 3px; background: #dbe2ea; }
+.mini .short { width: 60%; }
+
+/* ---------- 4) How it works ---------- */
+.how { padding: 72px 0; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); scroll-margin-top: 60px; }
+.how h2 { font-size: clamp(2rem, 4vw, 2.8rem); text-align: center; }
+.steps { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.steps li { padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); }
+.step-no {
+  display: flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; margin-bottom: 16px;
+  border-radius: 50%; background: var(--ui); color: #fff; font-weight: 700;
+}
+.steps h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.steps p { color: #475569; }
+
+/* ---------- 5) Builder ---------- */
+.builder { padding: 64px 0 72px; scroll-margin-top: 60px; }
+.builder-head {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.builder-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
+.save-note { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+.tools { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.form-panel, .preview-panel { min-width: 0; }
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(340px, 470px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+.card .note { font-size: 0.82rem; color: var(--muted); margin: -8px 0 12px; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field.full { grid-column: 1 / -1; }
+label, .label { font-size: 0.82rem; font-weight: 500; color: #475569; }
+
+input[type=text], input[type=email], input[type=tel], textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit; font-size: 0.92rem; color: var(--ink);
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+}
+textarea { resize: vertical; min-height: 84px; line-height: 1.5; }
+input:focus, textarea:focus { border-color: var(--ui); }
+
+/* Photo upload */
+.photo-row { display: flex; align-items: center; gap: 14px; }
+.photo-thumb {
+  width: 68px; height: 68px; border-radius: 50%; overflow: hidden; flex: none;
+  background: #e2e8f0; color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; text-align: center;
+}
+.photo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.photo-btns { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.file-btn { padding: 9px 16px; border-radius: 10px; font-weight: 600; font-size: 0.88rem; background: var(--ui-soft); color: var(--ui-dark); }
+.file-btn:hover { background: #d3efeb; }
+.link-btn { font-size: 0.88rem; color: var(--muted); text-decoration: underline; }
+.vh { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+.photo-msg { margin-top: 6px; font-size: 0.82rem; color: var(--muted); }
+.photo-msg.err { color: #b91c1c; }
+
+/* Education / project rows */
+.row {
+  position: relative;
+  border: 1px dashed #b8c4d2;
+  border-radius: 12px;
+  padding: 14px 12px 12px;
+  margin-bottom: 12px;
+}
+.row .x {
+  position: absolute; top: 6px; right: 6px;
+  width: 28px; height: 28px; border-radius: 50%;
+  font-size: 1.2rem; line-height: 1; color: var(--muted);
+}
+.row .x:hover { background: #fee2e2; color: #b91c1c; }
+.add-btn {
+  width: 100%; padding: 11px;
+  border: 1px dashed var(--ui); border-radius: 12px;
+  color: var(--ui-dark); font-weight: 600; font-size: 0.92rem;
+}
+.add-btn:hover { background: var(--ui-soft); }
+
+/* Big "Generate Resume" box at the end of the form */
+.generate-bar {
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--ui-soft);
+  border: 1px solid #bfe6e1;
+  text-align: center;
+}
+.generate-bar .btn { width: 100%; }
+.generate-bar p { margin-top: 10px; font-size: 0.88rem; color: #475569; }
+
+/* ---------- 6) Preview + Resume ---------- */
+.preview-panel {
+  position: sticky; top: 76px;
+  max-height: calc(100vh - 92px);
+  overflow: auto;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.preview-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.preview-head strong { font-size: 1rem; }
+.preview-head small { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+.preview-head small.stale { color: #b45309; font-weight: 500; }
+.preview-panel { scroll-margin-top: 80px; }
+
+/* Shown before the resume is generated */
+.empty-preview {
+  min-height: 460px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; padding: 40px 20px; text-align: center; color: var(--muted);
+}
+.empty-icon {
+  width: 68px; height: 68px; margin-bottom: 6px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 20px; background: #fff; color: var(--ui); font-weight: 700; font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+.empty-preview h4 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; font-size: 1.6rem; color: var(--ink); }
+
+.swatches { display: flex; gap: 8px; }
+.swatch { width: 26px; height: 26px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 1px var(--line); }
+.swatch.active { box-shadow: 0 0 0 2px var(--ink); }
+
+.scroll { padding: 18px; background: #e5eaf1; }
+.scale-box { margin: 0 auto; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18); background: #fff; }
+
+/* The resume itself (A4 page) */
+.resume {
+  --accent: #0d9488;
+  width: 794px;
+  min-height: 1123px;
+  transform-origin: top left;
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  /* the coloured sidebar runs the full height of the page */
+  background: linear-gradient(90deg, var(--accent) 0, var(--accent) 270px, #fff 270px);
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #1f2937;
+  line-height: 1.4;
+}
+
+.r-side { color: #fff; padding: 42px 26px; }
+.r-photo {
+  width: 158px; height: 158px; margin: 0 auto 30px;
+  border-radius: 50%; overflow: hidden;
+  border: 5px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.18);
+}
+.r-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.r-initial {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', Georgia, serif; font-size: 56px;
+}
+
+.r-side h3 {
+  font-size: 15px; font-weight: 700;
+  margin: 26px 0 12px; padding-bottom: 7px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+}
+.r-side h3:first-of-type { margin-top: 0; }
+.r-contact div { margin-bottom: 11px; font-size: 12.5px; line-height: 1.45; word-break: break-word; }
+.r-contact span { display: block; font-size: 11px; opacity: 0.72; }
+.r-tags span {
+  display: inline-block; margin: 0 6px 7px 0; padding: 4px 11px;
+  background: rgba(255, 255, 255, 0.2); border-radius: 999px; font-size: 12px;
+}
+.r-lines div { font-size: 12.5px; margin-bottom: 6px; }
+
+.r-main { padding: 48px 42px 40px 40px; }
+.r-name {
+  font-family: 'DM Serif Display', Georgia, serif; font-weight: 400;
+  font-size: 44px; line-height: 1.05; color: #111827;
+  word-break: break-word;
+}
+.r-role { margin-top: 8px; font-size: 16px; font-weight: 600; color: var(--accent); }
+
+.r-main h3 {
+  display: flex; align-items: center; gap: 12px;
+  margin: 30px 0 13px; font-size: 16px; font-weight: 700; color: var(--accent);
+}
+.r-main h3::after { content: ""; flex: 1; height: 1px; background: #e5e7eb; }
+
+.r-text { font-size: 13px; line-height: 1.65; color: #374151; white-space: pre-line; }
+.r-item { margin-bottom: 15px; break-inside: avoid; }
+.r-row { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+.r-item b { font-size: 14.5px; color: #111827; }
+.r-sub { font-size: 13px; color: #4b5563; margin-top: 2px; }
+.r-when { font-size: 12.5px; color: #6b7280; white-space: nowrap; }
+
+/* ---------- 7) Footer ---------- */
+.site-footer { padding: 26px 0; background: #fff; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+.site-footer .section-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.site-footer a:hover { color: var(--ui-dark); }
+
+/* Small message at the bottom of the screen */
+#toast {
+  position: fixed; left: 50%; bottom: 24px;
+  transform: translate(-50%, 30px); opacity: 0; pointer-events: none;
+  max-width: 90vw; padding: 12px 20px;
+  background: var(--ink); color: #fff; font-weight: 500; font-size: 0.92rem;
+  border-radius: 999px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- 8) Tablet and mobile ---------- */
+@media (max-width: 960px) {
+  .hero-inner { grid-template-columns: minmax(0, 1fr); }
+  .hero-art { display: none; }
+  .steps { grid-template-columns: 1fr; }
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .preview-panel { position: static; max-height: none; overflow: visible; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .nav-inner { padding: 12px 16px; }
+  .hero { padding: 48px 0 56px; }
+  .hero-inner { padding: 0 16px; }
+  .section-inner { padding: 0 16px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .tools .btn { flex: 1; }
+  .hero-btns .btn { flex: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  #toast { transition: none; }
+}
+
+/* ---------- 9) Print: only the resume is printed / saved as PDF ---------- */
+@page { size: A4; margin: 0; }
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { background: #fff; }
+  .site-nav, .hero, .how, .builder-head, .form-panel, .preview-head, .site-footer, .empty-preview, #toast { display: none !important; }
+  .builder { padding: 0; }
+  .section-inner { max-width: none; padding: 0; }
+  .app { display: block; }
+  .preview-panel { position: static; max-height: none; overflow: visible; border: none; border-radius: 0; }
+  .scroll { padding: 0; background: #fff; }
+  .scale-box { width: auto !important; height: auto !important; overflow: visible; box-shadow: none; }
+  .resume { transform: none !important; width: 210mm; min-height: 297mm; }
+}
